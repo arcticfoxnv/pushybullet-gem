@@ -23,29 +23,29 @@ module Pushybullet
       devs
     end
 
-    def create_push(push)
-      payload = JSON.dump(push.to_hash)
+    def create_push(push_request)
+      payload = JSON.dump(push_request.to_hash)
       resp = conn.post('v2/pushes', payload, 'Content-Type' => 'application/json')
       Pushybullet::Types::Push.from_hash(resp.body)
     end
 
     def push_link(title, body, url, target)
-      push = Pushybullet::Types::Push.from_hash({
-                                                  type: :link,
-                                                  title: title,
-                                                  body: body,
-                                                  url: url
-                                                })
+      push = Pushybullet::Types::PushRequest.from_hash({
+                                                         type: :link,
+                                                         title: title,
+                                                         body: body,
+                                                         url: url
+                                                       })
       push.target = target
       create_push(push)
     end
 
     def push_note(title, body, target)
-      push = Pushybullet::Types::Push.from_hash({
-                                                  type: :note,
-                                                  title: title,
-                                                  body: body
-                                                })
+      push = Pushybullet::Types::PushRequest.from_hash({
+                                                         type: :note,
+                                                         title: title,
+                                                         body: body
+                                                       })
       push.target = target
       create_push(push)
     end

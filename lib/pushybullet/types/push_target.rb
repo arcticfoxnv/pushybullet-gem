@@ -1,11 +1,13 @@
+# frozen_string_literal: true
+
 module Pushybullet
   module Types
     class PushTarget
       ID_TYPES = {
-        device: 'device_iden',
-        email: 'email',
         channel: 'channel_tag',
-        client: 'client_iden'
+        client: 'client_iden',
+        device: 'device_iden',
+        email: 'email'
       }.freeze
 
       def initialize(type, id)

@@ -1,4 +1,5 @@
-# require 'rspec'
+# frozen_string_literal: true
+
 require 'pushybullet/concerns'
 
 class Dummy

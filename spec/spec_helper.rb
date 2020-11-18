@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
 require 'simplecov'
-SimpleCov.start do
-end
+SimpleCov.start
 
 require 'bundler/setup'
 require 'pushybullet'

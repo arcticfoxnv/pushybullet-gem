@@ -6,7 +6,6 @@ module Pushybullet
   module Types
     class Push
       extend Pushybullet::Concerns::FromHash
-      include Pushybullet::Concerns::ToHash
 
       # strings
       attr_accessor :iden, :type, :guid, :direction,
@@ -26,10 +25,6 @@ module Pushybullet
 
       # ints
       attr_accessor :image_width, :image_height
-
-      def target=(target)
-        instance_variable_set("@#{target.key}", target.value) unless target.nil?
-      end
     end
   end
 end
