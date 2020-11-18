@@ -12,3 +12,11 @@ inherit_from: .rubocop_todo.yml
 # See https://docs.rubocop.org/rubocop/configuration
 AllCops:
   NewCops: enable
+
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'
+
+Style/Documentation:
+  Exclude:
+    - 'spec/**/*'

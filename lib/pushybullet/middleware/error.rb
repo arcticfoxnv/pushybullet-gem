@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'pushybullet/errors'
+
 module Pushybullet
   module Middleware
     class Error < Faraday::Response::RaiseError
