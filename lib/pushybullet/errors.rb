@@ -8,11 +8,7 @@ module Pushybullet
       protected
 
       def exc_msg_and_response(exc, response = nil)
-        headers = if response.nil? && exc.respond_to?(:each_key)
-                    exc[:headers]
-                  else
-                    response[:headers]
-                  end
+        headers = response_headers exc, response
 
         if headers['Content-Type'] =~ /\bjson$/
           err = JSON.parse(response[:body])
@@ -23,7 +19,16 @@ module Pushybullet
 
         super
       end
+
+      def response_headers(exc, response = nil)
+        if response.nil? && exc.respond_to?(:each_key)
+          exc[:headers]
+        else
+          response[:headers]
+        end
+      end
     end
+
     class Unauthorized < ClientError; end
     class Forbidden < ClientError; end
     class TooManyRequests < ClientError; end

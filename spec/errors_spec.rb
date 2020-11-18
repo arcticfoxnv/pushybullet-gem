@@ -14,31 +14,31 @@ RSpec.describe Pushybullet::Errors do
           {
             status: 401,
             headers: {
-              "Content-Type" => 'application/json',
+              'Content-Type' => 'application/json'
             },
             body: JSON.dump({
-              error: {
-                cat: "~(=^‥^)",
-                message: "Unauthorized",
-                type: "invalid_request",
-              }
-            })
+                              error: {
+                                cat: '~(=^‥^)',
+                                message: 'Unauthorized',
+                                type: 'invalid_request'
+                              }
+                            })
           }
         end
 
         it 'sets @cat' do
           expect(subject.cat).not_to be_nil
-          expect(subject.cat).to eq "~(=^‥^)"
+          expect(subject.cat).to eq '~(=^‥^)'
         end
 
         it 'sets @message' do
           expect(subject.message).not_to be_nil
-          expect(subject.message).to eq "Unauthorized"
+          expect(subject.message).to eq 'Unauthorized'
         end
 
         it 'sets @type' do
           expect(subject.type).not_to be_nil
-          expect(subject.type).to eq "invalid_request"
+          expect(subject.type).to eq 'invalid_request'
         end
       end
     end

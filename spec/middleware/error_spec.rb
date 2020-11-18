@@ -19,7 +19,7 @@ RSpec.describe Pushybullet::Middleware do
         let(:status) { 401 }
 
         it 'raises Pushybullet::Errors::Unauthorized' do
-          expect{ subject.on_complete(env) }.to raise_error(Pushybullet::Errors::Unauthorized)
+          expect { subject.on_complete(env) }.to raise_error(Pushybullet::Errors::Unauthorized)
         end
       end
 
@@ -27,7 +27,7 @@ RSpec.describe Pushybullet::Middleware do
         let(:status) { 403 }
 
         it 'raises Pushybullet::Errors::Forbidden' do
-          expect{ subject.on_complete(env) }.to raise_error(Pushybullet::Errors::Forbidden)
+          expect { subject.on_complete(env) }.to raise_error(Pushybullet::Errors::Forbidden)
         end
       end
 
@@ -35,7 +35,7 @@ RSpec.describe Pushybullet::Middleware do
         let(:status) { 404 }
 
         it 'raises Faraday::ResourceNotFound' do
-          expect{ subject.on_complete(env) }.to raise_error(Faraday::ResourceNotFound)
+          expect { subject.on_complete(env) }.to raise_error(Faraday::ResourceNotFound)
         end
       end
 
@@ -43,7 +43,7 @@ RSpec.describe Pushybullet::Middleware do
         let(:status) { 429 }
 
         it 'raises Pushybullet::Errors::TooManyRequests' do
-          expect{ subject.on_complete(env) }.to raise_error(Pushybullet::Errors::TooManyRequests)
+          expect { subject.on_complete(env) }.to raise_error(Pushybullet::Errors::TooManyRequests)
         end
       end
     end
