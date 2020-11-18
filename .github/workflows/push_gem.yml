@@ -1,10 +1,9 @@
-name: Ruby Gem
+name: Push gem
 
 on:
   push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+    tags:
+      - v*
 
 jobs:
   build:
