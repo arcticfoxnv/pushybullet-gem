@@ -8,13 +8,17 @@ module Pushybullet
       protected
 
       def exc_msg_and_response(exc, response = nil)
-        headers = response[:headers]
+        headers = if response.nil? && exc.respond_to?(:each_key)
+                    exc[:headers]
+                  else
+                    response[:headers]
+                  end
 
         if headers['Content-Type'] =~ /\bjson$/
           err = JSON.parse(response[:body])
-          @type = err[:error][:type]
-          @message = err[:error][:message]
-          @cat = err[:error][:cat]
+          @type = err['error']['type']
+          @message = err['error']['message']
+          @cat = err['error']['cat']
         end
 
         super

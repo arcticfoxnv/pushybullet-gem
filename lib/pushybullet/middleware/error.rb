@@ -13,6 +13,8 @@ module Pushybullet
           raise Errors::Forbidden, response_values(env)
         when 429
           raise Errors::TooManyRequests, response_values(env)
+        else
+          super
         end
       end
     end
